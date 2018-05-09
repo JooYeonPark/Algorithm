@@ -4,9 +4,10 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-// ¹®Á¦ 1786
+// ë¬¸ì œ 1786
 public class KMP {
 	public static void main(String[] args) throws IOException {
+		//Scannerê°€ ì•„ë‹Œ BufferedReaderì‚¬ìš© -> 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 		String text = br.readLine();
@@ -17,8 +18,8 @@ public class KMP {
 
 		int[] pi = new int[pArr.length];
 
-		init(pArr, pi);
-		List<Integer> result = kmp(tArr,pArr,pi);
+		init(pArr, pi); //ì „ì²˜ë¦¬ ê³¼ì •
+		List<Integer> result = kmp(tArr,pArr,pi); //kmpì•Œê³ ë¦¬ì¦˜ ì‹¤í–‰
 		
 		System.out.println(result.size());
 		for (Integer num : result) {
@@ -27,7 +28,9 @@ public class KMP {
 	}
 	
 	
-	//ÀüÃ³¸® °úÁ¤
+	//ì „ì²˜ë¦¬ ê³¼ì •
+	//abcabcabc
+	//000123456
 	public static void init(char[] pArr, int[] pi) {
 		int k = 0;
 		for (int i = 1; i < pArr.length; i++) {
@@ -40,7 +43,7 @@ public class KMP {
 		}
 	}
 	
-	//kmp ¾Ë°í¸®Áò ½ÇÇà
+	//kmp ì•Œê³ ë¦¬ì¦˜ ì‹¤í–‰
 	public static List<Integer> kmp(char[] tArr, char[] pArr, int[] pi) {
 		List<Integer> result = new ArrayList<Integer>();
 		int k=0;
@@ -52,7 +55,7 @@ public class KMP {
 			if(tArr[i] == pArr[k]) {
 				if(k==pArr.length-1) {
 					result.add(i-k);
-					k = 0;
+					k = pi[k]; 
 				}
 				else {
 					++k;
