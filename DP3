@@ -1,0 +1,35 @@
+/*
+ * 2579 : https://www.acmicpc.net/problem/2579
+ * 참고 사이트 : http://simsimjae.tistory.com/26
+ */
+
+
+import java.util.Scanner;
+
+public class Stair {
+public static void main(String[] args) {
+	Scanner scan = new Scanner(System.in);
+	int stairs = scan.nextInt();
+	int input[] = new int[stairs+3];
+	int dp[] = new int[stairs+3];
+	
+	for(int i=3; i<stairs+3; i++) {
+		input[i] = scan.nextInt();
+	}
+	
+	for(int i=3; i<stairs+3; i++) {
+			//현재계단만 밟았다고 가정. 그렇다면 전전max+현재
+			int now = input[i] + dp[i-2];
+			
+			//현재,전계단 밟았다고 가정. 그렇다면 전전전max+전+현재 
+			int nowNBack = input[i] + input[i-1] + dp[i-3];
+			
+			dp[i] = max(now, nowNBack);
+		}
+		System.out.println(dp[stairs+2]);
+	}
+
+public static int max(int a, int b) { return a>b ? a : b; }
+	
+	
+}
