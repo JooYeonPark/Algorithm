@@ -1,8 +1,9 @@
 /*
  * 1191 : https://www.acmicpc.net/problem/1191
- */
+ * 참고 사이트 : https://m.blog.naver.com/PostView.nhn?blogId=occidere&logNo=220899936160&proxyReferer=https%3A%2F%2Fwww.google.co.kr%2F
+ */ 
  
- import java.util.Scanner;
+import java.util.Scanner;
 
 public class TreeTravel {
 	public static void main(String[] args) {
@@ -94,6 +95,8 @@ class Tree {
 		}
 	}
 
+	//94번째 줄에서 search만 하고 node를 반환한 뒤 그것에 put을 하도록 구현하고 싶었으나 재귀적 특성때문에 방법을 찾지못함
+	//혹시나 찾은 분이 계시다면 comment달아주시면 감사하겠습니다.
 	public Node searchPut(char data, Node node, char left, char right) {
 		if(node.getData()==data) { 
 			if(left!='.') { node.setLeft(new Node(left)); }
